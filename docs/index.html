@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>علمِ تجوید</title>
+<meta name="description" content="قرآنِ کریم کو درست پڑھنے کا جامع اردو مرکز">
+<meta name="theme-color" content="#0f5a46">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    var f = localStorage.getItem('fs');
+    if (f) document.documentElement.style.setProperty('--fs', f + 'px');
+  } catch (e) {}
+</script>
+</head>
+<body class="home">
+<a class="skip" href="#main">مضمون پر جائیں</a>
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn" aria-label="فہرست کھولیں" aria-expanded="false" aria-controls="sidebar">☰</button>
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">ق</span><span>علمِ تجوید</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="تلاش کریں… (مثلاً: اخفاء، مد متصل، ض)" autocomplete="off" aria-label="تلاش">
+    <div id="results" class="results" hidden></div>
+  </div>
+  <div class="tools">
+    <button class="icon-btn" id="fsDown" aria-label="چھوٹا فونٹ">A−</button>
+    <button class="icon-btn" id="fsUp" aria-label="بڑا فونٹ">A+</button>
+    <button class="icon-btn" id="themeBtn" aria-label="رنگ کی تبدیلی">◐</button>
+  </div>
+</header>
+<div class="shell">
+  <aside class="sidebar" id="sidebar" aria-label="فہرستِ مضامین">
+    <nav>
+<a href="index.html" class="active">🏠 صفحۂ اوّل</a>
+<div class="nav-group"><h4>بنیادی باتیں</h4>
+<a href="01-taaruf.html">تجوید کا تعارف</a>
+<a href="02-sabut.html">تجوید کا ثبوت</a>
+<a href="03-lahn.html">لحن: جلی و خفی</a>
+<a href="04-adab.html">آدابِ تلاوت اور رفتار</a>
+</div>
+<div class="nav-group"><h4>حروف</h4>
+<a href="05-makharij.html">مخارجِ حروف</a>
+<a href="06-sifat.html">صفاتِ حروف</a>
+<a href="07-tafkhim.html">تفخیم و ترقیق</a>
+</div>
+<div class="nav-group"><h4>احکام</h4>
+<a href="08-noon.html">نون ساکن اور تنوین</a>
+<a href="09-meem.html">میمِ ساکن، غنہ اور مشدّد</a>
+<a href="10-madd.html">مد کے احکام</a>
+<a href="11-idgham.html">ادغام اور لامِ تعریف</a>
+<a href="12-hamza.html">ہمزہ: قطع و وصل</a>
+<a href="13-sakinain.html">اجتماعِ ساکنین</a>
+</div>
+<div class="nav-group"><h4>وقف و رسم</h4>
+<a href="14-waqf.html">وقف و ابتدا</a>
+<a href="15-rasm.html">رسمِ عثمانی اور تلاوت</a>
+<a href="16-qirat.html">قراءات اور روایتِ حفص</a>
+</div>
+<div class="nav-group"><h4>اوزار اور مشق</h4>
+<a href="letters.html">حروف کا مطالعہ (انٹرایکٹو)</a>
+<a href="quiz.html">امتحان و مشق</a>
+<a href="cheatsheet.html">خلاصہ و جداول</a>
+<a href="jazariyya.html">المقدمۃ الجزریہ (متن)</a>
+<a href="glossary.html">اصطلاحات کی فرہنگ</a>
+<a href="sources.html">مصادر و حوالہ جات</a>
+</div>
+    </nav>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+  <main id="main" class="content">
+<section class="hero-card">
+  <h1>علمِ تجوید</h1>
+  <p>قرآنِ کریم کو مخارج و صفات کے ساتھ درست پڑھنے کا مکمل، مرحلہ وار اور مفت اردو مرکز — مبتدی سے لے کر طالبِ علم تک۔</p>
+  <div class="hero-ayah" lang="ar">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</div>
+  <p style="font-size:.8em;opacity:.8">سورۃ المزمل: ۴</p>
+  <p><a class="btn" href="01-taaruf.html">پڑھنا شروع کریں</a><a class="btn ghost" href="letters.html">حروف کا مطالعہ</a><a class="btn ghost" href="quiz.html">امتحان</a></p>
+</section>
+
+<h2>یہ سائٹ کیسے استعمال کریں</h2>
+<div class="grid">
+  <div class="card" style="cursor:default"><b>۱۔ ترتیب سے پڑھیں</b><span>پہلے تعارف، پھر مخارج و صفات، پھر احکام۔ ہر صفحے کے آخر میں «اگلا» کا بٹن ہے۔</span></div>
+  <div class="card" style="cursor:default"><b>۲۔ تلاش استعمال کریں</b><span>اوپر تلاش کے خانے میں کوئی اصطلاح لکھیں (کی بورڈ پر <span class="ltr">/</span> دبانے سے بھی کھلتا ہے)۔</span></div>
+  <div class="card" style="cursor:default"><b>۳۔ مشق کریں</b><span>ہر حکم کے بعد امتحان میں متعلقہ سوالات حل کریں اور حروف کے صفحے سے خود جانچیں۔</span></div>
+  <div class="card" style="cursor:default"><b>۴۔ استاذ سے سنیں</b><span>تجوید کتاب سے سمجھی جاتی ہے مگر مشافہہ (استاذ سے سن کر پڑھنا) کے بغیر مکمل نہیں ہوتی۔</span></div>
+</div>
+
+<h2>فہرستِ مضامین</h2>
+<h3>بنیادی باتیں</h3>
+<div class="grid">
+  <a class="card" href="01-taaruf.html"><span class="n">۱</span><b>تجوید کا تعارف</b><span>تعریف، موضوع، غرض، حکم اور فضیلت</span></a>
+  <a class="card" href="02-sabut.html"><span class="n">۲</span><b>تجوید کا ثبوت</b><span>قرآن، حدیث اور ائمہ کے اقوال</span></a>
+  <a class="card" href="03-lahn.html"><span class="n">۳</span><b>لحن: جلی و خفی</b><span>غلطیوں کی اقسام اور حکم</span></a>
+  <a class="card" href="04-adab.html"><span class="n">۴</span><b>آدابِ تلاوت اور رفتار</b><span>استعاذہ، بسملہ، ترتیل، تدویر، حدر</span></a>
+</div>
+<h3>حروف</h3>
+<div class="grid">
+  <a class="card" href="05-makharij.html"><span class="n">۵</span><b>مخارجِ حروف</b><span>۱۷ مخارج، ۵ مقامات، پہچاننے کا طریقہ</span></a>
+  <a class="card" href="06-sifat.html"><span class="n">۶</span><b>صفاتِ حروف</b><span>لازمہ، ممیزہ، قوی و ضعیف، عارضہ</span></a>
+  <a class="card" href="07-tafkhim.html"><span class="n">۷</span><b>تفخیم و ترقیق</b><span>پُر و باریک، لامِ جلالہ، راء</span></a>
+</div>
+<h3>احکام</h3>
+<div class="grid">
+  <a class="card" href="08-noon.html"><span class="n">۸</span><b>نون ساکن اور تنوین</b><span>اظہار، ادغام، قلب، اخفاء</span></a>
+  <a class="card" href="09-meem.html"><span class="n">۹</span><b>میمِ ساکن، غنہ</b><span>اخفائے/ادغامِ/اظہارِ شفوی</span></a>
+  <a class="card" href="10-madd.html"><span class="n">۱۰</span><b>مد کے احکام</b><span>اصلی، متصل، منفصل، عارض، لازم</span></a>
+  <a class="card" href="11-idgham.html"><span class="n">۱۱</span><b>ادغام اور لامِ تعریف</b><span>مثلین، متجانسین، متقاربین</span></a>
+  <a class="card" href="12-hamza.html"><span class="n">۱۲</span><b>ہمزہ: قطع و وصل</b><span>قطع و وصل، ابتدا کی حرکت، استفہام</span></a>
+  <a class="card" href="13-sakinain.html"><span class="n">۱۳</span><b>اجتماعِ ساکنین</b><span>دو ساکنوں کا ملنا اور اس کے احکام</span></a>
+</div>
+<h3>وقف، رسم اور قراءات</h3>
+<div class="grid">
+  <a class="card" href="14-waqf.html"><span class="n">۱۴</span><b>وقف و ابتدا</b><span>اقسام اور علامات</span></a>
+  <a class="card" href="15-rasm.html"><span class="n">۱۵</span><b>رسمِ عثمانی اور تلاوت</b><span>مقطوع و موصول، تائے تانیث</span></a>
+  <a class="card" href="16-qirat.html"><span class="n">۱۶</span><b>قراءات اور روایتِ حفص</b><span>ائمہ و رواۃ، شاطبی و جزری</span></a>
+</div>
+<h3>اوزار اور مشق</h3>
+<div class="grid">
+  <a class="card" href="letters.html"><b>حروف کا مطالعہ</b><span>انٹرایکٹو: ہر حرف کا مخرج و صفات</span></a>
+  <a class="card" href="quiz.html"><b>امتحان و مشق</b><span>۶۰ سے زائد سوالات، جواب اور وضاحت کے ساتھ</span></a>
+  <a class="card" href="cheatsheet.html"><b>خلاصہ و جداول</b><span>ایک نظر میں تمام قواعد (پرنٹ کے قابل)</span></a>
+  <a class="card" href="jazariyya.html"><b>المقدمۃ الجزریہ</b><span>مکمل متن، حفظ کے لیے چھپانے کی سہولت</span></a>
+  <a class="card" href="glossary.html"><b>اصطلاحات کی فرہنگ</b><span>تجوید کی اصطلاحات کا لغت</span></a>
+  <a class="card" href="sources.html"><b>مصادر و حوالہ جات</b><span>ماخذ کتب اور وضاحت</span></a>
+</div>
+
+<div class="note"><b>روایت:</b> تمام قواعد <b>روایتِ حفص عن عاصم، بطریقِ شاطبیہ</b> کے مطابق ہیں — جو برصغیر میں رائج قراءت ہے۔ جہاں طریقِ جزری وغیرہ میں فرق ہو، وہاں ذکر کر دیا گیا ہے۔</div>
+
+
+  </main>
+</div>
+<footer class="footer">
+  <p>علمِ تجوید — طلبہ و عوام کے لیے مفت تعلیمی منصوبہ۔ مواد کی بنیاد: تجوید کی معتبر اردو کتب اور المقدمۃ الجزریہ۔ <a href="sources.html">مصادر و حوالہ جات</a></p>
+  <p class="small">اگر کہیں غلطی نظر آئے تو کسی مستند قاری/استاذ سے رجوع کریں اور GitHub پر اصلاح بھیجیں۔ تجوید سیکھنے کا اصل طریقہ استاذ سے مشافہہ (سن کر پڑھنا) ہے۔</p>
+</footer>
+<script src="assets/app.js" defer></script>
+
+</body>
+</html>
