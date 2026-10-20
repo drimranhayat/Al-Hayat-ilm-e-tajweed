@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css">
 <script>
   try {
     var t = localStorage.getItem('theme');
@@ -39,18 +40,18 @@
   <aside class="sidebar" id="sidebar" aria-label="فہرستِ مضامین">
     <nav>
 <a href="index.html">🏠 صفحۂ اوّل</a>
-<div class="nav-group"><h4>بنیادی باتیں</h4>
+<div class="nav-group g1"><h4>بنیادی باتیں</h4>
 <a href="01-taaruf.html">تجوید کا تعارف</a>
 <a href="02-sabut.html">تجوید کا ثبوت</a>
 <a href="03-lahn.html">لحن: جلی و خفی</a>
 <a href="04-adab.html">آدابِ تلاوت اور رفتار</a>
 </div>
-<div class="nav-group"><h4>حروف</h4>
+<div class="nav-group g2"><h4>حروف</h4>
 <a href="05-makharij.html">مخارجِ حروف</a>
 <a href="06-sifat.html">صفاتِ حروف</a>
 <a href="07-tafkhim.html">تفخیم و ترقیق</a>
 </div>
-<div class="nav-group"><h4>احکام</h4>
+<div class="nav-group g3"><h4>احکام</h4>
 <a href="08-noon.html">نون ساکن اور تنوین</a>
 <a href="09-meem.html">میمِ ساکن، غنہ اور مشدّد</a>
 <a href="10-madd.html">مد کے احکام</a>
@@ -58,12 +59,12 @@
 <a href="12-hamza.html">ہمزہ: قطع و وصل</a>
 <a href="13-sakinain.html">اجتماعِ ساکنین</a>
 </div>
-<div class="nav-group"><h4>وقف و رسم</h4>
+<div class="nav-group g4"><h4>وقف و رسم</h4>
 <a href="14-waqf.html" class="active">وقف و ابتدا</a>
-<a href="15-rasm.html">رسمِ عثمانی اور تلاوت</a>
+<a href="15-rasm.html">رسمِ مصحف: مقطوع، موصول اور تاءات</a>
 <a href="16-qirat.html">قراءات اور روایتِ حفص</a>
 </div>
-<div class="nav-group"><h4>اوزار اور مشق</h4>
+<div class="nav-group g5"><h4>اوزار اور مشق</h4>
 <a href="letters.html">حروف کا مطالعہ (انٹرایکٹو)</a>
 <a href="quiz.html">امتحان و مشق</a>
 <a href="cheatsheet.html">خلاصہ و جداول</a>
@@ -154,12 +155,18 @@
 
 <div class="src"><b>ماخذ:</b> قواعد التجوید علی روایۃ حفص (القاری)، وقف و ابتدا کے ابواب سے تصدیق شدہ؛ معارف التجوید؛ اصول التجوید؛ جمال القرآن؛ فیضانِ تجوید۔ رموزِ اوقاف کی تفصیل اپنے مصحف میں دیکھ لیں۔</div>
 
-<nav class="pager" aria-label="صفحات"><a class="next" href="15-rasm.html"><small>اگلا ←</small><b>رسمِ عثمانی اور تلاوت</b></a><a class="prev" href="13-sakinain.html"><small>→ پچھلا</small><b>اجتماعِ ساکنین</b></a></nav>
+<nav class="pager" aria-label="صفحات"><a class="next" href="15-rasm.html"><small>اگلا ←</small><b>رسمِ مصحف: مقطوع، موصول اور تاءات</b></a><a class="prev" href="13-sakinain.html"><small>→ پچھلا</small><b>اجتماعِ ساکنین</b></a></nav>
   </main>
 </div>
+<nav class="bottombar" aria-label="فوری رسائی">
+  <a href="index.html"><i aria-hidden="true">⌂</i>ہوم</a>
+  <button type="button" id="bbMenu"><i aria-hidden="true">☰</i>فہرست</button>
+  <button type="button" id="bbSearch"><i aria-hidden="true">⌕</i>تلاش</button>
+  <a href="quiz.html"><i aria-hidden="true">✓</i>مشق</a>
+</nav>
 <footer class="footer">
   <p>علمِ تجوید — طلبہ و عوام کے لیے مفت تعلیمی منصوبہ۔ مواد کی بنیاد: تجوید کی معتبر اردو کتب اور المقدمۃ الجزریہ۔ <a href="sources.html">مصادر و حوالہ جات</a></p>
-  <p class="small">اگر کہیں غلطی نظر آئے تو کسی مستند قاری/استاذ سے رجوع کریں اور GitHub پر اصلاح بھیجیں۔ تجوید سیکھنے کا اصل طریقہ استاذ سے مشافہہ (سن کر پڑھنا) ہے۔</p>
+  <p class="small">اگر کہیں غلطی نظر آئے تو کسی مستند قاری/استاذ سے رجوع کریں اور GitHub پر اصلاح بھیجیں۔ اس مواد پر کسی مستند قاری/استاذ کی باقاعدہ نظرِ ثانی تاحال نہیں ہوئی۔ تجوید سیکھنے کا اصل طریقہ استاذ سے مشافہہ (سن کر پڑھنا) ہے۔</p>
 </footer>
 <script src="assets/app.js" defer></script>
 

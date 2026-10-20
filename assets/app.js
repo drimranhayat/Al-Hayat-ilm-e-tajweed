@@ -85,3 +85,10 @@
     if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); q.focus(); }
   });
 })();
+
+/* bottom bar (mobile) */
+(function(){
+  var m=document.getElementById('bbMenu'),s=document.getElementById('bbSearch'),mb=document.getElementById('menuBtn'),q=document.getElementById('q');
+  if(m&&mb)m.addEventListener('click',function(){mb.click();});
+  if(s&&q)s.addEventListener('click',function(){window.scrollTo(0,0);q.focus();});
+})();

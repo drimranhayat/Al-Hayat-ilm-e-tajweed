@@ -1,0 +1,60 @@
+/* Emerald & gold theme — layered over style.css */
+:root{
+  --ur:"Jameel Noori Nastaleeq","Noto Nastaliq Urdu","Noto Naskh Arabic",serif;
+  --ar:"Amiri Quran","Scheherazade New","Noto Naskh Arabic",serif;
+  --g1:#0f5a46; --g2:#245a8a; --g3:#8a5a12; --g4:#7a3b6b; --g5:#a63d2f;
+  --star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b8892b' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M32 4l6 12 13-5-5 13 12 6-12 6 5 13-13-5-6 12-6-12-13 5 5-13-12-6 12-6-5-13 13 5z'/%3E%3C/g%3E%3C/svg%3E");
+}
+:root[data-theme="dark"]{--g1:#5fc2a1;--g2:#86b8e6;--g3:#e9c46a;--g4:#d9a0cc;--g5:#ef8c7d}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--g1:#5fc2a1;--g2:#86b8e6;--g3:#e9c46a;--g4:#d9a0cc;--g5:#ef8c7d}}
+
+body{line-height:2.4;background-image:var(--star);background-size:64px 64px}
+.content,.sidebar{background-clip:padding-box}
+.topbar{background:linear-gradient(90deg,var(--green),#0b4535);border-bottom:3px solid var(--gold)}
+h1,h2{color:var(--green);line-height:1.9}
+h2{padding-bottom:.2em;border-bottom:2px solid var(--gold-soft);position:relative}
+h2::after{content:"";position:absolute;right:0;bottom:-2px;width:64px;height:2px;background:var(--gold)}
+
+/* hero */
+.hero-card{background:linear-gradient(135deg,#0b4535,#167a60);color:#fff;border-radius:18px;
+  border:2px solid var(--gold);position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero-card::before{content:"";position:absolute;inset:0;background-image:var(--star);background-size:64px 64px;opacity:.7;pointer-events:none}
+.hero-card>*{position:relative}
+.hero-ayah,.ar-block{font-family:var(--ar);line-height:2.6}
+
+/* cards */
+.card{border-top:4px solid var(--c,var(--green));border-radius:14px}
+.card .n{background:var(--c,var(--green));color:#fff;clip-path:polygon(50% 0,62% 14%,80% 10%,84% 28%,100% 38%,90% 54%,100% 70%,82% 76%,78% 94%,60% 88%,50% 100%,40% 88%,22% 94%,18% 76%,0 70%,10% 54%,0 38%,16% 28%,20% 10%,38% 14%);
+  width:2.6em;height:2.6em;display:inline-flex;align-items:center;justify-content:center;border-radius:0}
+.card:hover{border-top-color:var(--gold)}
+.g1 .card{--c:var(--g1)}.g2 .card{--c:var(--g2)}.g3 .card{--c:var(--g3)}.g4 .card{--c:var(--g4)}.g5 .card{--c:var(--g5)}
+.nav-group.g1 h4{color:var(--g1)}.nav-group.g2 h4{color:var(--g2)}.nav-group.g3 h4{color:var(--g3)}.nav-group.g4 h4{color:var(--g4)}.nav-group.g5 h4{color:var(--g5)}
+.nav-group h4{border-right:4px solid currentColor;padding-right:8px}
+
+/* toc as pill tabs */
+.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:.5em 0 0}
+.toc li a{display:inline-block;padding:2px 14px;border-radius:999px;background:var(--gold-soft);color:var(--green);text-decoration:none;border:1px solid var(--gold);min-height:44px;line-height:2.4}
+.toc li a:hover{background:var(--gold);color:#fff}
+
+/* callouts */
+.def,.note,.warn,.tip{border-radius:12px;position:relative;padding-right:3.2em}
+.def::before,.note::before,.warn::before,.tip::before{position:absolute;right:.7em;top:.3em;font-size:1.2em}
+.def::before{content:"📖"}.note::before{content:"ℹ️"}.warn::before{content:"⚠️"}.tip::before{content:"💡"}
+
+/* arabic */
+.ar,span.ar{font-family:var(--ar);font-size:1.25em;line-height:2.8;background:var(--gold-soft);border-radius:6px;padding:0 .3em}
+td.ar{text-align:center}
+table{border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px}
+th{background:var(--green);color:#fff}
+tbody tr:nth-child(even) td,tr:nth-child(even) td{background:color-mix(in srgb,var(--surface-2) 55%,transparent)}
+
+/* prev/next & mobile bottom bar */
+.bottombar{display:none}
+@media(max-width:980px){
+  body{padding-bottom:64px}
+  .bottombar{display:flex;position:fixed;inset:auto 0 0 0;z-index:60;background:var(--surface);border-top:3px solid var(--gold);justify-content:space-around}
+  .bottombar a,.bottombar button{flex:1;min-height:56px;background:none;border:0;color:var(--green);font:inherit;font-size:.8em;text-decoration:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .bottombar a:active,.bottombar button:active{background:var(--gold-soft)}
+}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}

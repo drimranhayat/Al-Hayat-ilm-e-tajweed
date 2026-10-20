@@ -40,7 +40,7 @@ PAGES = [
     ("13-sakinain", "اجتماعِ ساکنین", "دو ساکنوں کا ملنا اور اس کے احکام", "احکام"),
     # وقف و رسم
     ("14-waqf", "وقف و ابتدا", "اقسامِ وقف، علاماتِ اوقاف، ابتدا", "وقف و رسم"),
-    ("15-rasm", "رسمِ عثمانی اور تلاوت", "مقطوع و موصول، تائے تانیث، وقف بر رسم", "وقف و رسم"),
+    ("15-rasm", "رسمِ مصحف: مقطوع، موصول اور تاءات", "جزریہ کے ابیات کی روشنی میں", "وقف و رسم"),
     ("16-qirat", "قراءات اور روایتِ حفص", "عشرہ ائمہ و رواۃ، امام عاصم، حفص، شاطبی و جزری", "وقف و رسم"),
     # اوزار
     ("letters", "حروف کا مطالعہ (انٹرایکٹو)", "کسی بھی حرف پر کلک کریں: مخرج اور تمام صفات دیکھیں", "اوزار اور مشق"),
@@ -99,6 +99,7 @@ def inline_diagrams(body: str) -> str:
 def nav_html(current: str) -> str:
     out = []
     last_group = None
+    gorder = []
     for slug, title, _, group in PAGES:
         if slug == "index":
             cls = ' class="active"' if current == slug else ""
@@ -107,7 +108,9 @@ def nav_html(current: str) -> str:
         if group != last_group:
             if last_group is not None:
                 out.append("</div>")
-            out.append(f'<div class="nav-group"><h4>{group}</h4>')
+            if group not in gorder:
+                gorder.append(group)
+            out.append(f'<div class="nav-group g{gorder.index(group) + 1}"><h4>{group}</h4>')
             last_group = group
         cls = ' class="active"' if current == slug else ""
         out.append(f'<a href="{slug}.html"{cls}>{title}</a>')

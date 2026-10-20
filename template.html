@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css">
 <script>
   try {
     var t = localStorage.getItem('theme');
@@ -47,9 +48,15 @@
 {{PAGER}}
   </main>
 </div>
+<nav class="bottombar" aria-label="فوری رسائی">
+  <a href="index.html"><i aria-hidden="true">⌂</i>ہوم</a>
+  <button type="button" id="bbMenu"><i aria-hidden="true">☰</i>فہرست</button>
+  <button type="button" id="bbSearch"><i aria-hidden="true">⌕</i>تلاش</button>
+  <a href="quiz.html"><i aria-hidden="true">✓</i>مشق</a>
+</nav>
 <footer class="footer">
   <p>علمِ تجوید — طلبہ و عوام کے لیے مفت تعلیمی منصوبہ۔ مواد کی بنیاد: تجوید کی معتبر اردو کتب اور المقدمۃ الجزریہ۔ <a href="sources.html">مصادر و حوالہ جات</a></p>
-  <p class="small">اگر کہیں غلطی نظر آئے تو کسی مستند قاری/استاذ سے رجوع کریں اور GitHub پر اصلاح بھیجیں۔ تجوید سیکھنے کا اصل طریقہ استاذ سے مشافہہ (سن کر پڑھنا) ہے۔</p>
+  <p class="small">اگر کہیں غلطی نظر آئے تو کسی مستند قاری/استاذ سے رجوع کریں اور GitHub پر اصلاح بھیجیں۔ اس مواد پر کسی مستند قاری/استاذ کی باقاعدہ نظرِ ثانی تاحال نہیں ہوئی۔ تجوید سیکھنے کا اصل طریقہ استاذ سے مشافہہ (سن کر پڑھنا) ہے۔</p>
 </footer>
 <script src="assets/app.js" defer></script>
 {{SCRIPTS}}
