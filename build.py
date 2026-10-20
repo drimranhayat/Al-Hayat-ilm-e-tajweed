@@ -33,7 +33,7 @@ PAGES = [
     ("07-tafkhim", "تفخیم و ترقیق", "پُر اور باریک حروف، لامِ جلالہ، راء کے احکام", "حروف"),
     # احکام
     ("08-noon", "نون ساکن اور تنوین", "اظہار، ادغام، قلب، اخفاء", "احکام"),
-    ("09-meem", "میمِ ساکن، غنہ اور مشدّد", "اخفائے شفوی، ادغامِ شفوی، اظہارِ شفوی", "احکام"),
+    ("09-meem", "میمِ ساکن، غنہ اور مشدّد", "میمِ ساکن کے احکام، غنہ اور مشدد حروف", "احکام"),
     ("10-madd", "مد کے احکام", "حروفِ مد و لین، مدِ اصلی و فرعی، مقدار", "احکام"),
     ("11-idgham", "ادغام اور لامِ تعریف", "صغیر و کبیر، مثلین، متجانسین، متقاربین", "احکام"),
     ("12-hamza", "ہمزہ: قطع و وصل", "ہمزۂ قطع و وصل، ابتدا کی حرکت، ہمزۂ استفہام", "احکام"),
@@ -57,6 +57,7 @@ PAGE_SCRIPTS = {
     "quiz": ["quiz-data.js", "quiz.js"],
     "jazariyya": ["jazariyya.js"],
 }
+TAB_SCRIPT = "tabs.js"
 
 TEMPLATE = (ROOT / "template.html").read_text(encoding="utf-8")
 
@@ -94,6 +95,75 @@ def inline_diagrams(body: str) -> str:
         cap_html = f"<figcaption>{cap.strip()}</figcaption>" if cap.strip() else ""
         return f'<figure class="diagram">{svg}{cap_html}</figure>'
     return re.sub(r"<!--diagram:(.*?)-->", rep, body)
+
+
+QA_DIR = CONTENT / "qa"
+EG_HDR = ("مثال", "مثالیں", "مثالیں", "نمونہ")
+
+
+def mark_examples(body: str) -> str:
+    """جدول کے «مثال» والے کالم کے خانوں پر class=eg لگاتا ہے۔"""
+    def table(m):
+        t = m.group(0)
+        hdr = re.search(r"<tr>(.*?)</tr>", t, flags=re.S)
+        if not hdr:
+            return t
+        heads = re.findall(r"<th[^>]*>(.*?)</th>", hdr.group(1), flags=re.S)
+        cols = [i for i, h in enumerate(heads) if strip_tags(h).startswith(EG_HDR)]
+        if not cols:
+            return t
+        def row(r):
+            cells = list(re.finditer(r"<td([^>]*)>", r.group(0)))
+            out, last = r.group(0), 0
+            for i in reversed(cols):
+                if i < len(cells):
+                    c = cells[i]
+                    attrs = c.group(1)
+                    if "class=" in attrs:
+                        new = "<td" + attrs.replace('class="', 'class="eg ', 1) + ">"
+                    else:
+                        new = "<td" + attrs + ' class="eg">'
+                    out = out[:c.start()] + new + out[c.end():]
+            return out
+        return re.sub(r"<tr>.*?</tr>", row, t, flags=re.S)
+    return re.sub(r"<table.*?</table>", table, body, flags=re.S)
+
+
+def build_tabs(slug: str, body: str) -> str:
+    f = QA_DIR / f"{slug}.json"
+    if not f.exists():
+        return body
+    d = json.loads(f.read_text(encoding="utf-8"))
+    qa = "".join(
+        f'<details class="qa-item"><summary><span class="qmark">س</span>{x["q"]}</summary>'
+        f'<div class="qa-ans"><span class="amark">ج</span><div>{x["a"]}</div></div></details>'
+        for x in d["qa"]
+    )
+    mc = []
+    for i, x in enumerate(d["mcq"], 1):
+        opts = "".join(
+            f'<li><button type="button" class="opt" data-i="{j}"><span class="ol">{"ابجد"[j]}</span><span>{o}</span></button></li>'
+            for j, o in enumerate(x["o"])
+        )
+        mc.append(
+            f'<div class="mcq" data-a="{x["a"]}"><p class="mq"><span class="mn">{i}</span>{x["q"]}</p>'
+            f'<ul class="opts">{opts}</ul><div class="expl" hidden><b>وضاحت:</b> {x["e"]}</div></div>'
+        )
+    mcq = (
+        f'<p class="mcq-intro">{len(d["mcq"])} سوالات؛ جواب پر کلک کریں۔ درست پر ✔ اور غلط پر ✘ کا نشان آئے گا، ساتھ وضاحت بھی۔</p>'
+        + "".join(mc)
+        + '<div class="mcq-score" hidden></div>'
+    )
+    return (
+        '<div class="ptabs" role="tablist" aria-label="مواد کے حصے">'
+        '<button role="tab" class="ptab t-art" id="tb-art" aria-controls="tp-art" aria-selected="true">📖 مضامین</button>'
+        '<button role="tab" class="ptab t-qa" id="tb-qa" aria-controls="tp-qa" aria-selected="false">❓ سوال و جواب</button>'
+        '<button role="tab" class="ptab t-mcq" id="tb-mcq" aria-controls="tp-mcq" aria-selected="false">✅ کثیر الانتخابی</button>'
+        '</div>'
+        f'<section role="tabpanel" class="tpanel" id="tp-art" aria-labelledby="tb-art">{body}</section>'
+        f'<section role="tabpanel" class="tpanel" id="tp-qa" aria-labelledby="tb-qa" hidden><h2>سوال و جواب</h2>{qa}</section>'
+        f'<section role="tabpanel" class="tpanel" id="tp-mcq" aria-labelledby="tb-mcq" hidden><h2>کثیر الانتخابی سوالات</h2>{mcq}</section>'
+    )
 
 
 def nav_html(current: str) -> str:
@@ -149,10 +219,13 @@ def main():
         if not src.exists():
             print("⚠️  غائب:", src.name)
             continue
-        body = inline_diagrams(src.read_text(encoding="utf-8"))
+        body = mark_examples(inline_diagrams(src.read_text(encoding="utf-8")))
+        body = build_tabs(slug, body)
         scripts = "".join(
             f'<script src="assets/{s}" defer></script>' for s in PAGE_SCRIPTS.get(slug, [])
         )
+        if (QA_DIR / f"{slug}.json").exists():
+            scripts += f'<script src="assets/{TAB_SCRIPT}" defer></script>'
         is_home = slug == "index"
         page_title = SITE_TITLE if is_home else f"{title} — {SITE_TITLE}"
         desc = SITE_TAGLINE if is_home else (summary or title)

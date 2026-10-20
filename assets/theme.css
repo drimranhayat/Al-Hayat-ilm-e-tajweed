@@ -1,6 +1,12 @@
 /* Emerald & gold theme — layered over style.css */
+@font-face{font-family:"Jameel Noori Nastaleeq";font-display:swap;
+  src:local("Jameel Noori Nastaleeq"),local("JameelNooriNastaleeq"),url("fonts/JameelNooriNastaleeq.ttf") format("truetype")}
 :root{
   --ur:"Jameel Noori Nastaleeq","Noto Nastaliq Urdu","Noto Naskh Arabic",serif;
+  --ink-ur:#14284b;   /* اردو: گہرا نیلا */
+  --ink-ar:#0a5a35;   /* عربی: گہرا زمردی */
+  --ink-term:#a8320a; /* اصطلاح: گہرا نارنجی سرخ، بولڈ */
+  --ink-eg:#5a1e96;   /* مثال: گہرا بنفشی */
   --ar:"Amiri Quran","Scheherazade New","Noto Naskh Arabic",serif;
   --g1:#0f5a46; --g2:#245a8a; --g3:#8a5a12; --g4:#7a3b6b; --g5:#a63d2f;
   --star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b8892b' stroke-opacity='.22' stroke-width='1'%3E%3Cpath d='M32 4l6 12 13-5-5 13 12 6-12 6 5 13-13-5-6 12-6-12-13 5 5-13-12-6 12-6-5-13 13 5z'/%3E%3C/g%3E%3C/svg%3E");
@@ -58,3 +64,47 @@ tbody tr:nth-child(even) td,tr:nth-child(even) td{background:color-mix(in srgb,v
 }
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* ===== رنگ و خط: اردو / عربی / اصطلاحات / مثالیں ===== */
+:root[data-theme="dark"]{--ink-ur:#e4ecf8;--ink-ar:#7be0ae;--ink-term:#ffa77f;--ink-eg:#d2b0ff}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink-ur:#e4ecf8;--ink-ar:#7be0ae;--ink-term:#ffa77f;--ink-eg:#d2b0ff}}
+body{color:var(--ink-ur)}
+.content p,.content li,.content td,.content small,.content summary{color:var(--ink-ur)}
+.ar,span.ar,.ar-block,[lang="ar"],.hero-ayah{font-family:var(--ar)!important;color:var(--ink-ar);font-weight:700}
+.hero-ayah{color:#f6dd8f}
+.content b,.content strong{color:var(--ink-term);font-weight:800}
+.content th b,.content th strong,.hero-card b,.btn b{color:inherit}
+.eg,td.eg,td.eg .ar,.eg .ar,.eg b{color:var(--ink-eg)!important}
+td.eg,.eg{font-weight:700}
+td.eg.ar{font-family:var(--ar)!important}
+.eg-label{color:var(--ink-eg);font-weight:800}
+
+/* ===== ٹیب: مضامین / سوال و جواب / کثیر الانتخابی ===== */
+.ptabs{display:flex;gap:8px;flex-wrap:wrap;margin:1rem 0 1.2rem;position:sticky;top:64px;z-index:20;background:var(--bg);padding:6px 0}
+.ptab{flex:1 1 10em;min-height:52px;font:inherit;font-size:.95em;font-weight:800;border-radius:12px;border:2px solid var(--c);background:var(--surface);color:var(--c);cursor:pointer;padding:0 14px}
+.ptab.t-art{--c:#0f5a46}.ptab.t-qa{--c:#1d4f91}.ptab.t-mcq{--c:#8a4b00}
+.ptab[aria-selected="true"]{background:var(--c);color:#fff}
+:root[data-theme="dark"] .ptab.t-art{--c:#5fc2a1}:root[data-theme="dark"] .ptab.t-qa{--c:#86b8e6}:root[data-theme="dark"] .ptab.t-mcq{--c:#e9c46a}
+:root[data-theme="dark"] .ptab[aria-selected="true"]{color:#0d1713}
+.tpanel[hidden]{display:none}
+.qa-item{background:var(--surface);border:1px solid var(--line);border-right:5px solid #1d4f91;border-radius:12px;margin:.7rem 0;padding:.2rem 1rem}
+.qa-item summary{cursor:pointer;font-weight:800;min-height:44px;display:flex;gap:10px;align-items:baseline;color:var(--ink-ur)}
+.qa-ans{display:flex;gap:10px;align-items:baseline;border-top:1px dashed var(--line);padding-top:.4rem}
+.qmark,.amark,.mn{display:inline-flex;align-items:center;justify-content:center;min-width:2em;height:2em;border-radius:50%;color:#fff;font-size:.75em;font-weight:800;flex:none}
+.qmark{background:#1d4f91}.amark{background:#0f5a46}.mn{background:#8a4b00;margin-left:.6em}
+.mcq{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem 1rem 1rem;margin:1rem 0}
+.mq{font-weight:800;margin:.3rem 0}
+.opts{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.opt{width:100%;text-align:right;font:inherit;display:flex;gap:10px;align-items:center;min-height:48px;padding:6px 12px;border-radius:10px;border:2px solid var(--line);background:var(--bg);color:var(--ink-ur);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt .ol{flex:none;width:2em;height:2em;border-radius:50%;background:var(--gold-soft);display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+.opt .mk{margin-right:auto;font-weight:800}
+.opt.right{border-color:#0f7a4a;background:color-mix(in srgb,#0f7a4a 16%,var(--surface))}
+.opt.wrong{border-color:#b3261e;background:color-mix(in srgb,#b3261e 14%,var(--surface))}
+.opt:disabled{cursor:default;opacity:1}
+.expl{margin-top:.7rem;padding:.4rem .9rem;border-right:4px solid var(--gold);background:var(--gold-soft);border-radius:8px}
+.mcq-score{font-weight:800;font-size:1.15em;padding:1rem;border:2px solid var(--gold);border-radius:12px;text-align:center}
+@media(max-width:980px){.ptabs{top:56px}}
+td.ar,td.eg{background:transparent!important;border-radius:0;padding:.4em .8em}
+td:first-child{min-width:7em}
+.content table td{vertical-align:middle}
